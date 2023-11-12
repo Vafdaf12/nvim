@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- setup lazy.nvim
 local plugins = {
-    require("vincent.plugin.nvimtree"),
+    require("vincent.plugin.explorer"),
     -- syntax highlighting
     require('vincent.plugin.treesitter'),
 
@@ -31,9 +31,8 @@ local plugins = {
     require('vincent.plugin.git'),
     require('vincent.plugin.gitsigns'),
 
-    "lukas-reineke/indent-blankline.nvim",
-
-    { 'mfussenegger/nvim-jdtls', lazy = true },
+    "kyazdani42/nvim-web-devicons",
+    { 'mfussenegger/nvim-jdtls' },
     { 'windwp/nvim-ts-autotag', lazy = true },
 }
 local opts = {}
