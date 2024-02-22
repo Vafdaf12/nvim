@@ -6,13 +6,22 @@
 --   term_mode = "t",
 --   command_mode = "c",
 
--- Set leader key as Space
-vim.g.mapleader = " "
+-- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+
+-- Selection
+vim.keymap.set("n", "gp", "`[v`]")
+vim.keymap.set('n', '<leader>tw', function()
+    vim.ui.input({ prompt = 'Tab width (spaces): ', default = '4' }, function(input)
+        input = tonumber(input)
+        vim.opt.tabstop = input
+        vim.opt.shiftwidth = input
+        vim.bo.softtabstop = input
+    end)
+end, {})
 
 -- Line moving
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- System clipboard things
 vim.keymap.set("n", "<leader>y", "\"+y")
