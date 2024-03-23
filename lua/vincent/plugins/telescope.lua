@@ -24,18 +24,8 @@ return {
                     }
                 },
             },
-            pickers = {
-                find_files = {
-                    theme = "dropdown",
-                },
-                git_branches = {
-                    theme = "dropdown",
-                },
-                treesitter = {
-                    theme = "dropdown",
-                },
-            },
         })
+
         vim.keymap.set('n', '<C-p>', builtin.find_files, {})
         vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
         vim.keymap.set('n', '<leader>cb', builtin.git_branches, {})

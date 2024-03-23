@@ -1,15 +1,19 @@
 
-local themes = {
-    ['github_dark_default'] = 'projekt0n/github-nvim-theme',
-    ['edge'] = 'sainnhe/edge',
-    ['kanagawa'] = 'rebelot/kanagawa.nvim',
-    ['rose-pine'] = 'rose-pine/neovim',
-}
-local active_theme = 'github_dark_default'
-
 return {
-    themes[active_theme],
-    config = function()
-        vim.cmd.colorscheme(active_theme)
-    end
+    {
+        'rose-pine/neovim',
+        name = 'rose-pine',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('rose-pine').setup({
+                variant = 'moon',
+                styles = {
+                    italic = false,
+                    transparency = true
+                },
+            })
+            vim.cmd("colorscheme rose-pine")
+        end,
+    }
 }

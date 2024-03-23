@@ -1,7 +1,6 @@
 {
   "LuaSnip": { "branch": "master", "commit": "f3b3d3446bcbfa62d638b1903ff00a78b2b730a1" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
-  "github-nvim-theme": { "branch": "main", "commit": "d92e1143e5aaa0d7df28a26dd8ee2102df2cadd8" },
   "lazy.nvim": { "branch": "main", "commit": "aedcd79811d491b60d0a6577a9c1701063c2a609" },
   "lsp-zero.nvim": { "branch": "v2.x", "commit": "9a686513eaaa13d737d0fec8956a18268ead8b29" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "60f6805b12a12e8a912aeb2f975dec1794a8994e" },
@@ -13,6 +12,7 @@
   "nvim-treesitter": { "branch": "master", "commit": "ebf0532d422cef34be5207e02929764885c47a05" },
   "nvim-web-devicons": { "branch": "master", "commit": "14ac5887110b06b89a96881d534230dac3ed134d" },
   "plenary.nvim": { "branch": "master", "commit": "4f71c0c4a196ceb656c824a70792f3df3ce6bb6d" },
+  "rose-pine": { "branch": "main", "commit": "7777aa953c1561fb93d595b33bf019b2ef4af9de" },
   "telescope.nvim": { "branch": "master", "commit": "b744cf59752aaa01561afb4223006de26f3836fd" },
   "vim-fugitive": { "branch": "master", "commit": "011cf4fcb93a9649ffc6dcdff56ef948f5d0f7cc" }
 }

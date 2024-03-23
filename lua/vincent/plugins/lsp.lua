@@ -6,8 +6,8 @@ return {
     cmd = 'Mason',
     dependencies = {
         -- LSP Support
-        'neovim/nvim-lspconfig',             -- Required
-        {                                      -- Optional
+        'neovim/nvim-lspconfig', -- Required
+        {                        -- Optional
             'williamboman/mason.nvim',
             build = function()
                 pcall(vim.cmd, 'MasonUpdate')
@@ -27,19 +27,19 @@ return {
     config = function()
         local lsp = require('lsp-zero')
         local lspconfig = require('lspconfig')
-        vim.keymap.set("n", "<leader>fm", ":LspZeroFormat<CR>")
+        vim.keymap.set("n", "<leader>fm", "<cmd>LspZeroFormat<CR>")
 
         lsp.preset("recommended")
 
-        lsp.on_attach(function(client, bufnr)
-            lsp.default_keymaps({buffer = bufnr})
+        lsp.on_attach(function(_, bufnr)
+            lsp.default_keymaps({ buffer = bufnr })
         end)
 
         -- (Optional) Configure lua language server for neovim
         lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
         lspconfig.jdtls.setup({
             root_dir = function()
-                return require("jdtls.setup").find_root({'gradlew', '.git', 'mvnw'})
+                return require("jdtls.setup").find_root({ 'gradlew', '.git', 'mvnw' })
             end,
         })
 
@@ -51,7 +51,7 @@ return {
                 ['<tab>'] = cmp.mapping.confirm({ select = false }),
             },
             window = {
-                completion = cmp.config.window.bordered(),
+                -- completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
             }
         })
