@@ -1,59 +1,46 @@
 return {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    lazy = true,
-    event = { 'BufReadPre', 'BufNewFile' },
-    cmd = 'Mason',
-    dependencies = {
-        -- LSP Support
-        'neovim/nvim-lspconfig', -- Required
-        {                        -- Optional
+    {
+        'neovim/nvim-lspconfig',
+        dependencies = {
+            -- Package manager to automatically install LSPs
             'williamboman/mason.nvim',
-            build = function()
-                pcall(vim.cmd, 'MasonUpdate')
-            end,
+            'williamboman/mason-lspconfig.nvim',
         },
-        'williamboman/mason-lspconfig.nvim', -- Optional
+        build = function()
+            pcall(vim.cmd, 'MasonUpdate')
+        end,
 
-        -- Autocompletion
-        'hrsh7th/nvim-cmp',     -- Required
-        'hrsh7th/cmp-nvim-lsp', -- Required
-        'L3MON4D3/LuaSnip',     -- Required
-
-        -- Utility method for identifying java project
-        'mfussenegger/nvim-jdtls'
-    },
-
-    config = function()
-        local lsp = require('lsp-zero')
-        local lspconfig = require('lspconfig')
-        vim.keymap.set("n", "<leader>fm", "<cmd>LspZeroFormat<CR>")
-
-        lsp.preset("recommended")
-
-        lsp.on_attach(function(_, bufnr)
-            lsp.default_keymaps({ buffer = bufnr })
-        end)
-
-        -- (Optional) Configure lua language server for neovim
-        lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-        lspconfig.jdtls.setup({
-            root_dir = function()
-                return require("jdtls.setup").find_root({ 'gradlew', '.git', 'mvnw' })
-            end,
-        })
-
-        lsp.setup()
-
-        local cmp = require('cmp')
-        cmp.setup({
-            mapping = {
-                ['<tab>'] = cmp.mapping.confirm({ select = false }),
-            },
-            window = {
-                -- completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered(),
+        config = function()
+            require("mason").setup()
+            require("mason-lspconfig").setup {
+                ensure_installed = { "lua_ls" }
             }
-        })
-    end
+
+            require("mason-lspconfig").setup_handlers {
+                -- Default configuration for language servers
+                function(server_name) -- default handler (optional)
+                    require("lspconfig")[server_name].setup {}
+                end,
+
+                ["ts_ls"] = function() end,
+
+                ["jdtls"] = function()
+                    require("lspconfig").jdtls.setup({
+                        root_dir = function()
+                            return require("jdtls.setup").find_root({ 'gradlew', '.git', 'mvnw', 'build.xml' }) .. "/src"
+                        end,
+                    })
+                end,
+            }
+        end
+    },
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
+    },
+    {
+        'mfussenegger/nvim-jdtls',
+        lazy = true
+    },
 }

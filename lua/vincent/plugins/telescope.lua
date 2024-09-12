@@ -3,36 +3,35 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim'
     },
-    lazy = true,
-    keys = {
-        '<C-p>',
-        '<leader>fs',
-        '<leader>cb',
-        '<leader>ts',
-    },
     config = function()
         local actions = require("telescope.actions")
         local builtin = require('telescope.builtin')
 
         require('telescope').setup({
             defaults = {
-                preview = false,
                 mappings = {
                     i = {
                         ['<esc>'] = actions.close,
                         ["<C-u>"] = false,
                     }
                 },
+                file_ignore_patterns = {
+                    "external", -- for C++ projects with external stuff that shouldn't be search regularly
+                }
             },
         })
 
         vim.keymap.set('n', '<C-p>', builtin.find_files, {})
         vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
-        vim.keymap.set('n', '<leader>cb', builtin.git_branches, {})
-        vim.keymap.set('n', '<leader>ts', function()
+        vim.keymap.set('n', '<leader>tsf', function()
             builtin.treesitter({
                 symbols = { 'method', 'function' },
             })
         end, {})
+        vim.keymap.set('n', '<leader>tsa', function()
+            builtin.treesitter({
+            })
+        end, {})
     end
 }
+

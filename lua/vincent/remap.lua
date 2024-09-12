@@ -10,7 +10,7 @@
 
 -- Selection
 vim.keymap.set("n", "gp", "`[v`]")
-vim.keymap.set('n', '<leader>tw', function()
+vim.keymap.set('n', '<leader>ftw', function()
     vim.ui.input({ prompt = 'Tab width (spaces): ', default = '4' }, function(input)
         input = tonumber(input)
         vim.opt.tabstop = input
@@ -22,6 +22,11 @@ end, {})
 -- Line moving
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Quickfix List
+vim.keymap.set("n", "]q", ":cnext<CR>")
+vim.keymap.set("n", "[q", ":cprev<CR>")
+
 
 -- System clipboard things
 vim.keymap.set("n", "<leader>y", "\"+y")

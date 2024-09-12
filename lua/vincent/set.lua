@@ -13,7 +13,7 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.scrolloff = 8
--- vim.opt.signcolumn = "yes:1"
+vim.opt.signcolumn = "no"
 
 vim.opt.guicursor = ""
 vim.opt.wrap = false
