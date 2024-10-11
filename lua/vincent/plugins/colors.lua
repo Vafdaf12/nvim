@@ -7,6 +7,7 @@ return {
         config = true,
         opts = {
             disable = {
+                -- Overrides the fat cursor setting
                 colored_cursor = true
             }
         },
@@ -16,9 +17,6 @@ return {
         end
     }
 }
-
-
-
 
 -- return {
 --     'olivercederborg/poimandres.nvim',

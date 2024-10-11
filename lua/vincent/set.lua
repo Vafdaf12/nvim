@@ -18,6 +18,8 @@ vim.opt.signcolumn = "no"
 vim.opt.guicursor = ""
 vim.opt.wrap = false
 vim.opt.termguicolors = true
-vim.updatetime = 50
+vim.updatetime = 80
 
 vim.g.mapleader = " "
+
+vim.opt.shortmess:append({ I = true })

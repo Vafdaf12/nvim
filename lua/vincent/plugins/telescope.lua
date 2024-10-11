@@ -23,15 +23,8 @@ return {
 
         vim.keymap.set('n', '<C-p>', builtin.find_files, {})
         vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
-        vim.keymap.set('n', '<leader>tsf', function()
-            builtin.treesitter({
-                symbols = { 'method', 'function' },
-            })
-        end, {})
-        vim.keymap.set('n', '<leader>tsa', function()
-            builtin.treesitter({
-            })
+        vim.keymap.set('n', '<leader>ts', function()
+            builtin.treesitter({})
         end, {})
     end
 }
-

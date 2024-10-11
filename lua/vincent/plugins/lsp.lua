@@ -22,15 +22,8 @@ return {
                     require("lspconfig")[server_name].setup {}
                 end,
 
+                -- Disable configuring typescript language server in favour of typescript-tools
                 ["ts_ls"] = function() end,
-
-                ["jdtls"] = function()
-                    require("lspconfig").jdtls.setup({
-                        root_dir = function()
-                            return require("jdtls.setup").find_root({ 'gradlew', '.git', 'mvnw', 'build.xml' }) .. "/src"
-                        end,
-                    })
-                end,
             }
         end
     },
@@ -38,9 +31,5 @@ return {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
-    },
-    {
-        'mfussenegger/nvim-jdtls',
-        lazy = true
-    },
+    }
 }

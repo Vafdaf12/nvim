@@ -6,7 +6,7 @@
 --   term_mode = "t",
 --   command_mode = "c",
 
--- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 -- Selection
 vim.keymap.set("n", "gp", "`[v`]")
@@ -18,6 +18,9 @@ vim.keymap.set('n', '<leader>ftw', function()
         vim.bo.softtabstop = input
     end)
 end, {})
+
+
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 
 -- Line moving
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
