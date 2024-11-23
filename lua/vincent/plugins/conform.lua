@@ -7,8 +7,6 @@ return {
             typescript = { "prettierd", "prettier" },
             typescriptreact = { "prettierd", "prettier" },
             javascriptreact = { "prettierd", "prettier" },
-            rust = { "rustfmt" },
-            go = { "gofmt" },
 
             ["_"] = { "trim_whitespace" },
         },

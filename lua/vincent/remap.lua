@@ -20,7 +20,6 @@ vim.keymap.set('n', '<leader>ftw', function()
 end, {})
 
 
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 
 -- Line moving
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
