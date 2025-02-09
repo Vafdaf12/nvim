@@ -20,6 +20,7 @@ return {
                     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
                     vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
                     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+                    vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.setqflist() end)
                     vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, opts)
                     vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
                     vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
@@ -35,6 +36,7 @@ return {
             require("mason-lspconfig").setup {
                 ensure_installed = { "lua_ls" }
             }
+            require("lspconfig").gleam.setup {}
 
             require("mason-lspconfig").setup_handlers {
                 -- Default configuration for language servers

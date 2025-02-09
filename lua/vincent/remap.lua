@@ -8,6 +8,10 @@
 
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
+-- Remaps for navigating quickfix
+vim.keymap.set("n", "]c", ':cnext<CR>')
+vim.keymap.set("n", "[c", ':cprev<CR>')
+
 -- Selection
 vim.keymap.set("n", "gp", "`[v`]")
 vim.keymap.set('n', '<leader>ftw', function()
@@ -18,17 +22,6 @@ vim.keymap.set('n', '<leader>ftw', function()
         vim.bo.softtabstop = input
     end)
 end, {})
-
-
-
--- Line moving
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
--- Quickfix List
-vim.keymap.set("n", "]q", ":cnext<CR>")
-vim.keymap.set("n", "[q", ":cprev<CR>")
-
 
 -- System clipboard things
 vim.keymap.set("n", "<leader>y", "\"+y")
