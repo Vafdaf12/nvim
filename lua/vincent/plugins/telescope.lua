@@ -22,6 +22,7 @@ return {
         })
 
         vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+        vim.keymap.set('n', '<leader>kt', function() builtin.colorscheme { ignore_builtins = true } end, {})
         vim.keymap.set('n', '<leader>hs', builtin.help_tags, {})
         vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
         vim.keymap.set('n', '<leader>ts', function()

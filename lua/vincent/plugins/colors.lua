@@ -12,52 +12,39 @@ return {
             }
         },
         init = function()
-            vim.g.material_style = "darker"
+            vim.g.material_style = "deep ocean"
             vim.cmd.colorscheme("material")
         end
+    },
+    {
+        'rose-pine/neovim',
+        lazy = false,
+        main = "rose-pine",
+        config = true,
+        opts = {
+            styles = {
+                italic = false,
+                transparency = false,
+            },
+        }
+    },
+    {
+        'folke/tokyonight.nvim',
+        lazy = false,
+        config = true,
+        opts = {
+            style = 'night'
+        },
+    },
+    { "savq/melange-nvim", lazy = false, },
+    {
+        "Tsuzat/NeoSolarized.nvim",
+        lazy = false,
+
+        main = "NeoSolarized",
+        config = true,
+        opts = {
+            transparent = false
+        }
     }
 }
-
--- return {
---     'olivercederborg/poimandres.nvim',
---     name = 'poimandres',
---     lazy = false,
---     priority = 1000,
---     config = function()
---         require('poimandres').setup({})
---     end,
---     init = function()
---         vim.cmd("colorscheme poimandres")
---     end
--- }
--- return {
---     'folke/tokyonight.nvim',
---     lazy = false,
---     priority = 1000,
---     config = true,
---     opts = {
---         style = 'night'
---     },
---     init = function()
---         vim.cmd("colorscheme tokyonight")
---     end,
--- }
-
--- return {
---     {
---         'rose-pine/neovim',
---         lazy = false,
---         priority = 1000,
---         main = "rose-pine",
---         config = true,
---         opts = {
---             styles = {
---                 italic = false,
---                 transparency = false,
---             },
---         },
---         init = function()
---             vim.cmd.colorscheme("rose-pine")
---         end
---     }
--- }

@@ -6,7 +6,7 @@
 --   term_mode = "t",
 --   command_mode = "c",
 
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 -- Remaps for navigating quickfix
 vim.keymap.set("n", "]c", ':cnext<CR>')
