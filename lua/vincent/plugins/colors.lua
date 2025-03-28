@@ -1,3 +1,5 @@
+local transparency = false
+
 return {
     {
         'marko-cerovac/material.nvim',
@@ -8,12 +10,16 @@ return {
         opts = {
             disable = {
                 -- Overrides the fat cursor setting
-                colored_cursor = true
-            }
+                colored_cursor = true,
+                background = transparency,
+            },
         },
         init = function()
-            vim.g.material_style = "deep ocean"
-            vim.cmd.colorscheme("material")
+            if transparency then
+                vim.g.material_style = "palenight"
+            else
+                vim.g.material_style = "deep ocean"
+            end
         end
     },
     {
@@ -24,7 +30,7 @@ return {
         opts = {
             styles = {
                 italic = false,
-                transparency = false,
+                transparency = transparency,
             },
         }
     },
@@ -33,18 +39,16 @@ return {
         lazy = false,
         config = true,
         opts = {
-            style = 'night'
+            style = 'night',
+            transparent = transparency
         },
+        init = function()
+            vim.cmd.colorscheme("tokyonight")
+        end
     },
-    { "savq/melange-nvim", lazy = false, },
     {
-        "Tsuzat/NeoSolarized.nvim",
+        'Mofiqul/vscode.nvim',
         lazy = false,
-
-        main = "NeoSolarized",
         config = true,
-        opts = {
-            transparent = false
-        }
-    }
+    },
 }
