@@ -1,6 +1,6 @@
 return {
     'saghen/blink.cmp',
-    version = "*",
+    version = "1.*",
     dependencies = 'rafamadriz/friendly-snippets',
     opts = {
         fuzzy = { implementation = "prefer_rust_with_warning" },
@@ -11,13 +11,6 @@ return {
         },
         sources = {
             default = { 'lsp', 'path', 'snippets', 'buffer' },
-        },
-        signature = {
-            enabled = true,
-            window = {
-                border = 'single',
-                show_documentation = false
-            }
         },
         completion = {
             documentation = {
