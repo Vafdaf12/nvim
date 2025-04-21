@@ -2,9 +2,11 @@ return {
     {
         'williamboman/mason.nvim',
         dependencies = {
-            -- Package manager to automatically install LSPs
-            'williamboman/mason-lspconfig.nvim',
+            -- Contains a bunch of pre-made LSP configurations
             'neovim/nvim-lspconfig',
+
+            -- Automatically sets up installed LSPs
+            'williamboman/mason-lspconfig.nvim',
         },
         build = function()
             pcall(vim.cmd, 'MasonUpdate')
@@ -20,17 +22,6 @@ return {
                     require("lspconfig")[server_name].setup {}
                 end,
             }
-
-
-            -- vim.o.completeopt = "menu,menuone,noinsert,fuzzy,popup"
-            vim.api.nvim_create_autocmd('LspAttach', {
-                callback = function(ev)
-                    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-                    if client:supports_method('textDocument/definition') then
-                        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
-                    end
-                end,
-            })
         end
     },
 }

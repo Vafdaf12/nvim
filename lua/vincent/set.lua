@@ -22,21 +22,15 @@ vim.updatetime = 80
 
 vim.g.mapleader = " "
 
+-- Removes the Welcome screen
 vim.opt.shortmess:append({ I = true })
 
--- local _border = "rounded"
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
---     vim.lsp.handlers.hover, {
---         border = _border
---     }
--- )
--- 
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
---     vim.lsp.handlers.signature_help, {
---         border = _border
---     }
--- )
--- 
--- vim.diagnostic.config {
---     float = { border = _border }
--- }
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client:supports_method('textDocument/definition') then
+            vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
+        end
+        vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end)
+    end,
+})
