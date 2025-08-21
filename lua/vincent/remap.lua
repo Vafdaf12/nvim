@@ -12,6 +12,10 @@
 vim.keymap.set("n", "]c", ':cnext<CR>')
 vim.keymap.set("n", "[c", ':cprev<CR>')
 
+-- Remaps to handle line wraps in a more intuitive way
+vim.keymap.set("n", "j", 'gj')
+vim.keymap.set("n", "k", 'gk')
+
 -- Selection
 vim.keymap.set("n", "gp", "`[v`]")
 vim.keymap.set('n', '<leader>ftw', function()

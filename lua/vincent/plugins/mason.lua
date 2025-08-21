@@ -1,3 +1,7 @@
+function is_deno_project()
+    return vim.fs.root(0, { 'deno.json', 'deno.jsonc', 'deno.lock' }) ~= nil
+end
+
 return {
     {
         'williamboman/mason.nvim',
@@ -21,6 +25,14 @@ return {
                 function(server_name)  -- default handler (optional)
                     require("lspconfig")[server_name].setup {}
                 end,
+                ["denols"] = function()
+                    require("lspconfig").denols.setup{
+                        settings = {
+                            deno = { enable = is_deno_project() }
+                        }
+                    }
+                end
+
             }
         end
     },
